@@ -17,6 +17,22 @@ public class Emprestimo {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
+  public Emprestimo(
+    Long id,
+    Date dataEmprestimo,
+    Date dataDevolucao,
+    Date dataDevolvido,
+    Usuario id_usuario,
+    Livro id_livro
+  ) {
+    this.id = id;
+    this.dataEmprestimo = dataEmprestimo;
+    this.dataDevolucao = dataDevolucao;
+    this.dataDevolvido = dataDevolvido;
+    this.id_usuario = id_usuario;
+    this.id_livro = id_livro;
+  }
+
   private Date dataEmprestimo;
   private Date dataDevolucao;
   private Date dataDevolvido;
@@ -30,4 +46,52 @@ public class Emprestimo {
   private Livro id_livro;
 
   public Emprestimo() {}
+
+  public Long getId() {
+    return id;
+  }
+
+  public void setId(Long id) {
+    this.id = id;
+  }
+
+  public Date getDataEmprestimo() {
+    return dataEmprestimo;
+  }
+
+  public void setDataEmprestimo(Date dataEmprestimo) {
+    this.dataEmprestimo = dataEmprestimo;
+  }
+
+  public Date getDataDevolucao() {
+    return dataDevolucao;
+  }
+
+  public void setDataDevolucao(Date dataDevolucao) {
+    this.dataDevolucao = dataDevolucao;
+  }
+
+  public Date getDataDevolvido() {
+    return dataDevolvido;
+  }
+
+  public void setDataDevolvido(Date dataDevolvido) {
+    this.dataDevolvido = dataDevolvido;
+  }
+
+  public Usuario getId_usuario() {
+    return id_usuario;
+  }
+
+  public void setId_usuario(Usuario id_usuario) {
+    this.id_usuario = id_usuario;
+  }
+
+  public Livro getId_livro() {
+    return id_livro;
+  }
+
+  public void setId_livro(Livro id_livro) {
+    this.id_livro = id_livro;
+  }
 }
