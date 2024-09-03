@@ -17,6 +17,20 @@ public class Emprestimo {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
+  private Date dataEmprestimo;
+  private Date dataDevolucao;
+  private Date dataDevolvido;
+
+  @ManyToOne
+  @JoinColumn(name = "usuario_id")
+  private Usuario id_usuario;
+
+  @ManyToOne
+  @JoinColumn(name = "livro_id")
+  private Livro id_livro;
+
+  public Emprestimo() {}
+
   public Emprestimo(
     Long id,
     Date dataEmprestimo,
@@ -32,20 +46,6 @@ public class Emprestimo {
     this.id_usuario = id_usuario;
     this.id_livro = id_livro;
   }
-
-  private Date dataEmprestimo;
-  private Date dataDevolucao;
-  private Date dataDevolvido;
-
-  @ManyToOne
-  @JoinColumn(name = "usuario_id")
-  private Usuario id_usuario;
-
-  @ManyToOne
-  @JoinColumn(name = "livro_id")
-  private Livro id_livro;
-
-  public Emprestimo() {}
 
   public Long getId() {
     return id;
