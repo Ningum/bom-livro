@@ -5,7 +5,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import java.util.Date;
 
 @Entity
 @Table(name = "tb_autor")
@@ -17,7 +16,7 @@ public class Autor {
 
   private String nome;
   private String sobrenome;
-  private Date dataNascimento;
+  private String dataNascimento;
   private String nacionalidade;
 
   public Autor() {}
@@ -26,7 +25,7 @@ public class Autor {
     Long id,
     String nome,
     String sobrenome,
-    Date dataNascimento,
+    String dataNascimento,
     String nacionalidade
   ) {
     this.id = id;
@@ -37,11 +36,11 @@ public class Autor {
   }
 
   public Autor(Autor entity) {
-    this.id = id;
-    this.nome = nome;
-    this.sobrenome = sobrenome;
-    this.dataNascimento = dataNascimento;
-    this.nacionalidade = nacionalidade;
+    id = entity.getId();
+    nome = entity.getNome();
+    sobrenome = entity.getSobrenome();
+    dataNascimento = entity.getDataNascimento();
+    nacionalidade = entity.getNacionalidade();
   }
 
   public Long getId() {
@@ -68,11 +67,11 @@ public class Autor {
     this.sobrenome = sobrenome;
   }
 
-  public Date getDataNascimento() {
+  public String getDataNascimento() {
     return dataNascimento;
   }
 
-  public void setDataNascimento(Date dataNascimento) {
+  public void setDataNascimento(String dataNascimento) {
     this.dataNascimento = dataNascimento;
   }
 
