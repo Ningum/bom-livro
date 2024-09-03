@@ -34,10 +34,10 @@ public class AutorService {
 
   @Transactional(readOnly = true)
   public AutorDTO findById(Long id) {
-    Autor product = autorRepository
+    Autor autor = autorRepository
       .findById(id)
       .orElseThrow(() -> new RuntimeException("Recurso não encontrado"));
-    return new AutorDTO(product);
+    return new AutorDTO(autor);
   }
 
   @Transactional

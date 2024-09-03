@@ -24,7 +24,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 public class AutorController {
 
   @Autowired
-  private AutorService autorService;
+  private AutorService service;
 
   @GetMapping
   public ResponseEntity<Page<AutorDTO>> findAll(
@@ -32,19 +32,19 @@ public class AutorController {
     @RequestParam(name = "sobrenome", defaultValue = "") String sobrenome,
     Pageable pageable
   ) {
-    Page<AutorDTO> dto = autorService.findaAll(nome, sobrenome, pageable);
+    Page<AutorDTO> dto = service.findaAll(nome, sobrenome, pageable);
     return ResponseEntity.ok(dto);
   }
 
   @GetMapping(value = "/{id}")
   public ResponseEntity<AutorDTO> findById(@PathVariable Long id) {
-    AutorDTO dto = autorService.findById(id);
+    AutorDTO dto = service.findById(id);
     return ResponseEntity.ok(dto);
   }
 
   @PostMapping
   public ResponseEntity<AutorDTO> insert(@RequestBody AutorDTO dto) {
-    dto = autorService.insert(dto);
+    dto = service.insert(dto);
     URI uri = ServletUriComponentsBuilder
       .fromCurrentRequest()
       .path("/{id}")
@@ -58,13 +58,13 @@ public class AutorController {
     @PathVariable Long id,
     @Valid @RequestBody AutorDTO dto
   ) {
-    dto = autorService.update(id, dto);
+    dto = service.update(id, dto);
     return ResponseEntity.ok(dto);
   }
 
   @DeleteMapping(value = "/{id}")
   public ResponseEntity<Void> delete(@PathVariable Long id) {
-    autorService.delete(id);
+    service.delete(id);
     return ResponseEntity.noContent().build();
   }
 }
