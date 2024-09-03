@@ -7,7 +7,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import org.hibernate.annotations.ManyToAny;
 
 @Entity
 @Table(name = "tb_livro")
@@ -29,6 +28,8 @@ public class Livro {
   @ManyToOne
   @JoinColumn(name = "autor_id")
   private Autor id_autor;
+
+  public Livro() {}
 
   public Livro(
     Long id,
@@ -103,6 +104,4 @@ public class Livro {
   public void setId_autor(Autor id_autor) {
     this.id_autor = id_autor;
   }
-
-  public Livro() {}
 }
